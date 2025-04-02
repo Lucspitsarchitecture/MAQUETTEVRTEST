@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Maquette WebXR</title>
+    <meta name="description" content="Maquette 3D interactive avec vues 360°">
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="pov1" src="POV1.jpg">
+        <img id="pov2" src="POV2.jpg">
+        <img id="pov3" src="POV3.jpg">
+      </a-assets>
+
+      <a-entity camera position="0 1.6 0" look-controls wasd-controls></a-entity>
+
+      <a-entity gltf-model="dbe.glb" position="0 0 -2" scale="1 1 1"></a-entity>
+
+      <!-- Pastilles cliquables -->
+      <a-sphere position="0 1 -1" radius="0.1" color="red"
+                event-set__click="_target: #sky; visible: true; src: #pov1">
+      </a-sphere>
+
+      <a-sphere position="0 1.2 -1.5" radius="0.1" color="green"
+                event-set__click="_target: #sky; visible: true; src: #pov2">
+      </a-sphere>
+
+      <a-sphere position="0 1.4 -2" radius="0.1" color="blue"
+                event-set__click="_target: #sky; visible: true; src: #pov3">
+      </a-sphere>
+
+      <a-sky id="sky" radius="10" visible="false"></a-sky>
+    </a-scene>
+  </body>
+</html>
